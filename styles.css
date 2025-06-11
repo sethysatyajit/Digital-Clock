@@ -1,0 +1,236 @@
+:root {
+    --bg-light: linear-gradient(135deg, #f9f9f9, #e4e4e4);
+    --bg-dark: linear-gradient(135deg, #1e1e2f, #3a3a52);
+    --text-light: #222;
+    --text-dark: #fff;
+    --glow-color: #ff007a;
+    --primary-color: #4CAF50;
+    --button-hover-color: #388E3C;
+    --footer-glow: rgba(255, 255, 255, 0.2);
+  }
+  
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--bg-light);
+    color: var(--text-light);
+    height: 100vh;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  .container {
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+    animation: glowEffect 1.5s infinite alternate;
+  }
+  
+  @keyframes glowEffect {
+    0% {
+      text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color), 0 0 30px var(--glow-color);
+    }
+    50% {
+      text-shadow: 0 0 20px var(--glow-color), 0 0 30px var(--glow-color), 0 0 40px var(--glow-color);
+    }
+    100% {
+      text-shadow: 0 0 30px var(--glow-color), 0 0 40px var(--glow-color), 0 0 50px var(--glow-color);
+    }
+  }
+  
+  .clock-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+  
+  .clock {
+    font-size: 6rem;
+    padding: 20px 40px;
+    border: 5px solid currentColor;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 40px var(--glow-color);
+    text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color);
+    animation: glowPulse 2s infinite;
+    position: relative;
+    color: inherit;
+    overflow: hidden;
+  }
+  
+  .clock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.4), transparent 60%);
+    animation: lightWave 4s infinite;
+  }
+  
+  .controls {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 30px;
+  }
+  
+  button {
+    font-size: 1.2rem;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background-color: var(--primary-color);
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  button:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 0 15px var(--button-hover-color), 0 0 30px var(--button-hover-color);
+  }
+  
+  .dark-mode {
+    background: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  
+  .dark-mode .clock {
+    box-shadow: 0 0 40px var(--glow-color), 0 0 60px var(--glow-color);
+  }
+  
+  .dark-mode button {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  footer {
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 30px;
+    border-radius: 30px;
+    box-shadow: 0 0 15px var(--footer-glow), 0 0 30px var(--footer-glow);
+    transition: all 0.3s ease-in-out;
+    position: relative;
+  }
+  
+  footer a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+    color: var(--glow-color);
+  }
+  
+  footer:hover {
+    box-shadow: 0 0 20px var(--footer-glow), 0 0 50px var(--footer-glow);
+  }
+  
+  @keyframes glowPulse {
+    0%, 100% {
+      text-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+      box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+    }
+    50% {
+      text-shadow: 0 0 40px var(--glow-color), 0 0 80px var(--glow-color);
+      box-shadow: 0 0 40px var(--glow-color), 0 0 80px var(--glow-color);
+    }
+  }
+  
+  @keyframes lightWave {
+    0% {
+      transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+  
+  @media (max-width: 1024px) {
+    .clock {
+      font-size: 5rem;
+      padding: 15px 30px;
+    }
+  
+    header h1 {
+      font-size: 2.5rem;
+    }
+  
+    button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  
+    footer {
+      font-size: 0.9rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .clock {
+      font-size: 4.5rem;
+      padding: 15px 25px;
+    }
+  
+    header h1 {
+      font-size: 2rem;
+    }
+  
+    button {
+      font-size: 0.9rem;
+      padding: 8px 15px;
+    }
+  
+    footer {
+      font-size: 0.85rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .clock {
+      font-size: 4rem;
+      padding: 10px 20px;
+    }
+  
+    header h1 {
+      font-size: 1.8rem;
+    }
+  
+    button {
+      font-size: 0.8rem;
+      padding: 8px 12px;
+    }
+  
+    footer {
+      font-size: 0.8rem;
+    }
+  }
+  
